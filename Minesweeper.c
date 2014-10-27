@@ -4,6 +4,10 @@
 enum BLOCK_TYPE {MINE=-1,SAFE=0};
 #define FIELD_SIZE 12
 
+int bord[FIELD_SIZE][FIELD_SIZE];
+int bord2[FIELD_SIZE][FIELD_SIZE];
+int fin;
+
 int getrandom(int min , int max);
 void space(int height , int width);
 void output(int bord[FIELD_SIZE][FIELD_SIZE] , int bord2[FIELD_SIZE][FIELD_SIZE]);
@@ -15,9 +19,6 @@ int main(void)
 	int k;
 	int a , b;
 	int level;
-	int fin;
-	int bord[FIELD_SIZE][FIELD_SIZE];
-	int bord2[FIELD_SIZE][FIELD_SIZE];
 
 	for(i = 1; i < FIELD_SIZE - 1; i++)
 	{
