@@ -1,43 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int getrandom(int min,int max);
+enum BLOCK_TYPE {MINE　=　-1　, SAFE　=　0　, CHECKED = 1};
+#define FIELD_SIZE 12
+
+int getrandom(int min , int max);
+void space(int height , int width , int n);
 
 int main(void)
 {
-	int bord[12][12],bord2[12][12],i,j,k,level,a,b,fin=100;//bord:そのマスがどのようなマスかの情報　bord2:そのマスが公開されてるかどうかの情報　fin:終了条件
+	int i;
+	int j;
+	int k;
+	int a , b;
+	int level;
+	int fin;
+	int bord[FIELD_SIZE][FIELD_SIZE];
+	int bord2[FIELD_SIZE][FIELD_SIZE];
 
-	for(i=1;i<11;i++)
+	for(i = 1; i < FIELD_SIZE - 1; i++)
 	{
-		for(j=1;j<11;j++)
+		for(j = 1; j < FIELD_SIZE - 1; j++)
 		{
-			bord[i][j]=0;
-			bord2[i][j]=0;
+			bord[i][j] = SAFE;
+			bord2[i][j] = SAFE;
 		}
 	}
 
 	while(1)
 	{
-		fin=100;
+		fin = 100;
 		printf("レベルを入力してください");
-		scanf("%d",&level);
+		scanf("%d", &level);
 
-		fin-=level*4;
+		fin -= level * 4;
 
-		for(i=1;i<=level*4;) //地雷の位置
+		while(i <= level * 4)
 		{
-			a=getrondom(1,10);
-			b=getrondom(1,10);
-			
-			if(bord[a][b]==0)
+			a = getrandom(1 , 10);
+			b = getrandom(1 , 10);
+
+			if(bord[a][b] == SAFE)
 			{
 				i++;
-				bord[a][b]=-1;
-				for(j=a-1;j<=a+1;j++)
+				bord[a][b] = MINE;
+				for(j = a - 1; j <= a + 1; j++)
 				{
-					for(k=b-1;k<=b+1;k++)
+					for(k = b - 1; k <= b + 1; k++)
 					{
-						if(bord[j][k]!=-1)
+						if(bord[j][k] != -1)
 						{
 							bord[j][k]++;
 						}
@@ -45,25 +56,62 @@ int main(void)
 				}
 			}
 		}
-	
-		scanf("%d %d",&i,&j); //どのマスを選んだか
-		if(bord[i][j]==-1)
+		
+		while(1)
 		{
-			printf("gameover\n");
-			continue;
-		}
-		if(bord[i][j]>0)
-		{
-			bord2[i][j]=1;
-		}
-		if(bord[i][j]==0)
-		{
-			bord
+			scanf("%d %d", &i , &j);
+
+			if(bord[i][j] == MINE)
+			{
+				printf("gameover\n");
+				break;
+			}
+
+			if(bord[i][j] > SAFE)
+			{
+				bord2[i][j] = 1;
+				fin--;
+			}
+
+			if(bord[i][j] == SAFE)
+			{
+				
+			}
+
+			if(fin == 0)
+			{
+				printf("クリア\n");
+			}
 		}
 	}
 }
 
-int getrandom(int min,int max)
+int getrandom(int min , int max)
 {
-	return min+(int)(rand()*(max-min+1.0)/(1.0+RAND_MAX));
+	return min + (int)(rand() * (max - min + 1.0) / (1.0 + RAND_MAX));
+}
+
+void space(int height , int width)
+{
+	n=-1;
+	int i;
+	int h[] = { 1 ,  1 ,  0 , -1 , -1 , -1 ,  0 ,  1};
+	int w[] = { 0 ,  1 ,  1 ,  1 ,  0 , -1 , -1 , -1};
+
+	for (i = 0; i < 8; ++i)
+	{
+		if ((height + h[i]) < 11 && (height + h[i]) > 0 && (width + w[i]) < 11 && (width + w[i]) > 0)
+		{
+			if (bord2[height + h[i]][width + w[i]] == 0 && bord[height+h[i]][width+w[i]] != -1)
+			{
+				bord2[height + h[i]][width + w[i]] = 1;
+				fin--;
+				space(height + h[i] , width + w[i]);
+				n++;
+				cmd[n]=i;
+			}
+		}
+	}
+
+	return ;
 }
