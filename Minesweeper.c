@@ -140,5 +140,6 @@ void output(int bord[FIELD_SIZE][FIELD_SIZE], int bord2[FIELD_SIZE][FIELD_SIZE])
 		puts("");
 	}
 	puts("");
+	
 	return ;
 }
