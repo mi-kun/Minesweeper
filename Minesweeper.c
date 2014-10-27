@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-enum BLOCK_TYPE {MINE　=　-1　, SAFE　=　0　, CHECKED = 1};
+enum BLOCK_TYPE {MINE　=　-1　, SAFE　=　0};
 #define FIELD_SIZE 12
 
 int getrandom(int min , int max);
-void space(int height , int width , int n);
+void space(int height , int width);
+void output(int bord[FIELD_SIZE][FIELD_SIZE] , int bord2[FIELD_SIZE][FIELD_SIZE])
 
 int main(void)
 {
@@ -75,13 +76,15 @@ int main(void)
 
 			if(bord[i][j] == SAFE)
 			{
-				
+				space(i,j)
 			}
 
 			if(fin == 0)
 			{
 				printf("クリア\n");
 			}
+
+			output(int bord[FIELD_SIZE][FIELD_SIZE], int bord2[FIELD_SIZE][FIELD_SIZE])
 		}
 	}
 }
@@ -110,5 +113,35 @@ void space(int height , int width)
 		}
 	}
 
+	return ;
+}
+
+void output(int bord[FIELD_SIZE][FIELD_SIZE], int bord2[FIELD_SIZE][FIELD_SIZE])
+{
+	int i;
+	int j;
+	for(i=1;i<11;i++)
+	{
+		for(j=1;j<11;j++)
+		{
+			if(bord2[i][j]==0)
+			{
+				if(bord[i][j]==SAFE)
+				{
+					printf("   ");
+				}
+				else
+				{
+					printf(" %d ",bord[i][j]);
+				}
+			}
+			else
+			{
+				printf("   ");
+			}
+		}
+		puts("");
+	}
+	puts("");
 	return ;
 }
