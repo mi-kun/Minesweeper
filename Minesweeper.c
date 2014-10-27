@@ -93,7 +93,6 @@ int getrandom(int min , int max)
 
 void space(int height , int width)
 {
-	n=-1;
 	int i;
 	int h[] = { 1 ,  1 ,  0 , -1 , -1 , -1 ,  0 ,  1};
 	int w[] = { 0 ,  1 ,  1 ,  1 ,  0 , -1 , -1 , -1};
@@ -107,8 +106,6 @@ void space(int height , int width)
 				bord2[height + h[i]][width + w[i]] = 1;
 				fin--;
 				space(height + h[i] , width + w[i]);
-				n++;
-				cmd[n]=i;
 			}
 		}
 	}
