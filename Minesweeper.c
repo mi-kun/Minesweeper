@@ -10,7 +10,7 @@ int fin;
 
 int getrandom(int min , int max);
 void space(int height , int width);
-void output(int bord[FIELD_SIZE][FIELD_SIZE] , int bord2[FIELD_SIZE][FIELD_SIZE]);
+void output(void);
 
 int main(void)
 {
@@ -83,7 +83,7 @@ int main(void)
 			printf("クリア\n");
 		}
 
-		output(int bord[FIELD_SIZE][FIELD_SIZE], int bord2[FIELD_SIZE][FIELD_SIZE]);
+		output();
 	}
 }
 
@@ -114,7 +114,7 @@ void space(int height , int width)
 	return ;
 }
 
-void output(int bord[FIELD_SIZE][FIELD_SIZE], int bord2[FIELD_SIZE][FIELD_SIZE])
+void output(void)
 {
 	int i;
 	int j;
