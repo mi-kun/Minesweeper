@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-enum BLOCK_TYPE {MINE　=　-1　, SAFE　=　0};
+enum BLOCK_TYPE {MINE=-1,SAFE=0};
 #define FIELD_SIZE 12
 
 int getrandom(int min , int max);
 void space(int height , int width);
-void output(int bord[FIELD_SIZE][FIELD_SIZE] , int bord2[FIELD_SIZE][FIELD_SIZE])
+void output(int bord[FIELD_SIZE][FIELD_SIZE] , int bord2[FIELD_SIZE][FIELD_SIZE]);
 
 int main(void)
 {
@@ -28,64 +28,61 @@ int main(void)
 		}
 	}
 
-	while(1)
+	fin = 100;
+	printf("レベルを入力してください");
+	scanf("%d", &level);
+
+	fin -= level * 4;
+
+	while(i <= level * 4)
 	{
-		fin = 100;
-		printf("レベルを入力してください");
-		scanf("%d", &level);
+		a = getrandom(1 , 10);
+		b = getrandom(1 , 10);
 
-		fin -= level * 4;
-
-		while(i <= level * 4)
+		if(bord[a][b] == SAFE)
 		{
-			a = getrandom(1 , 10);
-			b = getrandom(1 , 10);
-
-			if(bord[a][b] == SAFE)
+			i++;
+			bord[a][b] = MINE;
+			for(j = a - 1; j <= a + 1; j++)
 			{
-				i++;
-				bord[a][b] = MINE;
-				for(j = a - 1; j <= a + 1; j++)
+				for(k = b - 1; k <= b + 1; k++)
 				{
-					for(k = b - 1; k <= b + 1; k++)
+					if(bord[j][k] != -1)
 					{
-						if(bord[j][k] != -1)
-						{
-							bord[j][k]++;
-						}
+						bord[j][k]++;
 					}
 				}
 			}
 		}
-		
-		while(1)
+	}
+	
+	while(1)
+	{
+		scanf("%d %d", &i , &j);
+
+		if(bord[i][j] == MINE)
 		{
-			scanf("%d %d", &i , &j);
-
-			if(bord[i][j] == MINE)
-			{
-				printf("gameover\n");
-				break;
-			}
-
-			if(bord[i][j] > SAFE)
-			{
-				bord2[i][j] = 1;
-				fin--;
-			}
-
-			if(bord[i][j] == SAFE)
-			{
-				space(i,j)
-			}
-
-			if(fin == 0)
-			{
-				printf("クリア\n");
-			}
-
-			output(int bord[FIELD_SIZE][FIELD_SIZE], int bord2[FIELD_SIZE][FIELD_SIZE])
+			printf("gameover\n");
+			break;
 		}
+
+		if(bord[i][j] > SAFE)
+		{
+			bord2[i][j] = 1;
+			fin--;
+		}
+
+		if(bord[i][j] == SAFE)
+		{
+			space(i,j);
+		}
+
+		if(fin == 0)
+		{
+			printf("クリア\n");
+		}
+
+		output(int bord[FIELD_SIZE][FIELD_SIZE], int bord2[FIELD_SIZE][FIELD_SIZE]);
 	}
 }
 
