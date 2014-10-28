@@ -37,6 +37,8 @@ int main(void)
 	}
 
 	fin = (FIELD_SIZE - 2) * (FIELD_SIZE - 2);
+	printf("This game is 'Minesweeper'.\n Size of the board is 10 * 10.\nNumber of mines is the number of level * 10.\n\n");
+
 	printf("Is level (1-6): ");
 	for(i = 1 ; i <= 1 ; i++)
 	{
