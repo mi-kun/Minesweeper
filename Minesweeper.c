@@ -164,6 +164,9 @@ void space(int height , int width)
 {
 	int i;
 
+	board2[height][width]=1;
+	fin--;
+
 	for (i = 0; i < 4; ++i)
 	{
 		if ((height + h[i]) < FIELD_SIZE-1 && (height + h[i]) > 0 && (width + w[i]) < FIELD_SIZE-1 && (width + w[i]) > 0)
@@ -172,8 +175,6 @@ void space(int height , int width)
 			{
 				if(board[height + h[i]][width + w[i]]==SAFE)
 				{
-					board2[height + h[i]][width + w[i]]=1;
-					fin--;
 					space(height + h[i] , width + w[i]);
 				}
 				else if(board[height + h[i]][width + w[i]] != MINE)
