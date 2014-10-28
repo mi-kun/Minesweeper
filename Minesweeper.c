@@ -8,7 +8,7 @@ enum BLOCK_TYPE {MINE=-1,SAFE=0};
 int board[FIELD_SIZE][FIELD_SIZE];
 int board2[FIELD_SIZE][FIELD_SIZE];
 int fin;
-int h[] = { 1 , 0 , -1 ,  0};
+int h[] = { -1 , 0 , 1 ,  0};
 int w[] = { 0 , 1 ,  0 , -1};
 
 int getrandom(int min , int max);
@@ -37,7 +37,7 @@ int main(void)
 	}
 
 	fin = (FIELD_SIZE - 2) * (FIELD_SIZE - 2);
-	printf("This game is 'Minesweeper'.\n Size of the board is 10 * 10.\nNumber of mines is the number of level * 10.\n\n");
+	printf("This game is 'Minesweeper'.\n Size of the board is 10 * 10.\nNumber of mines is the number of level * 8.\n\n");
 
 	printf("Is level (1-6): ");
 	while(1)
@@ -67,11 +67,11 @@ int main(void)
 		printf("Please continue.\n");
 	}
 	
-	fin -= level * 10;
+	fin -= level * 8;
 
 	i=0;
 
-	while(i < level * 10)
+	while(i < level * 8)
 	{
 		a = getrandom(1 , 10);
 		
