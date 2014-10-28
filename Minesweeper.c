@@ -8,8 +8,8 @@ enum BLOCK_TYPE {MINE=-1,SAFE=0};
 int board[FIELD_SIZE][FIELD_SIZE];
 int board2[FIELD_SIZE][FIELD_SIZE];
 int fin;
-int h[] = { 0 , 1 , 0 , -1 ,  0};
-int w[] = { 0 , 0 , 1 ,  0 , -1};
+int h[] = { 1 , 0 , -1 ,  0};
+int w[] = { 0 , 1 ,  0 , -1};
 
 int getrandom(int min , int max);
 void space(int height , int width);
@@ -65,7 +65,7 @@ int main(void)
 
 	i=0;
 
-	while(i <= level * 10)
+	while(i < level * 10)
 	{
 		a = getrandom(1 , 10);
 		
