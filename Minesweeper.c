@@ -40,27 +40,31 @@ int main(void)
 	printf("This game is 'Minesweeper'.\n Size of the board is 10 * 10.\nNumber of mines is the number of level * 10.\n\n");
 
 	printf("Is level (1-6): ");
-	for(i = 1 ; i <= 1 ; i++)
+	while(1)
 	{
 		scanf("%d" , &level);
-		if(level < 1 || level > 6)
+
+		if(level <= 6 && level >= 1)
 		{
-			printf("Please continue.\n");
-			continue ;
+			break;
 		}
+
+		printf("Please continue.\n");
 	}
 	
 	printf("Is coordinate (1-10) (1-10) : ");
-	for(i = 1 ; i <= 1 ; i++)
+	
+	while(1)
 	{
 		scanf("%d" , &x);
 		scanf("%d" , &y);
 
-		if(x < 1 || x > 10 || y < 1 || y > 10)
+		if(x < FIELD_SIZE-1 && x > 0 && y < FIELD_SIZE-1 && y > 0)
 		{
-			printf("Please continue.\n");
-			continue ;
+			break;
 		}
+
+		printf("Please continue.\n");
 	}
 	
 	fin -= level * 10;
