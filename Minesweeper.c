@@ -8,8 +8,8 @@ enum BLOCK_TYPE {MINE=-1,SAFE=0};
 int board[FIELD_SIZE][FIELD_SIZE];
 int board2[FIELD_SIZE][FIELD_SIZE];
 int fin;
-int h[] = { -1 , 0 , 1 ,  0};
-int w[] = { 0 , 1 ,  0 , -1};
+int h[] = { -1 , -1 ,  0 ,  1 ,  1 ,  1 ,  0 , -1 };
+int w[] = {  0 ,  1 ,  1 ,  1 ,  0 , -1 , -1 , -1 };
 
 int getrandom(int min , int max);
 void space(int height , int width);
@@ -171,7 +171,9 @@ void space(int height , int width)
 	board2[height][width]=1;
 	fin--;
 
-	for (i = 0; i < 4; ++i)
+	printf("%d %d\n" , height , width);
+
+	for (i = 0; i < 8; ++i)
 	{
 		if ((height + h[i]) < FIELD_SIZE-1 && (height + h[i]) > 0 && (width + w[i]) < FIELD_SIZE-1 && (width + w[i]) > 0)
 		{
@@ -185,11 +187,14 @@ void space(int height , int width)
 				{
 					board2[height + h[i]][width + w[i]] = 1;
 					fin--;
+
+					printf("return1\n");
 					return ;
 				}
 			}
 		}
 	}
+	printf("return2\n");
 
 	return ;
 }
