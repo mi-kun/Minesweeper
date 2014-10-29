@@ -133,7 +133,7 @@ int main(void)
 		{
 			if(board[i][j] == MINE)
 			{
-				printf("gameover\n");
+				printf("GAMEOVER\n");
 				break;
 			}
 
@@ -150,7 +150,7 @@ int main(void)
 
 			if(fin == 0)
 			{
-				printf("crear\n");
+				printf("CLEAR\n");
 				break;
 			}
 		}
