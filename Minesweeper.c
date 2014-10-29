@@ -67,11 +67,11 @@ int main(void)
 		printf("Please continue.\n");
 	}
 	
-	fin -= level * 8;
+	fin -= level * 6;
 
 	i=0;
 
-	while(i < level * 8)
+	while(i < level * 6)
 	{
 		a = getrandom(1 , 10);
 		
