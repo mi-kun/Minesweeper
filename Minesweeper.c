@@ -37,7 +37,7 @@ int main(void)
 	}
 
 	fin = (FIELD_SIZE - 2) * (FIELD_SIZE - 2);
-	printf("This game is 'Minesweeper'.\n Size of the board is 10 * 10.\nNumber of mines is the number of level * 8.\n\n");
+	printf("This game is 'Minesweeper'.\n Size of the board is 10 * 10.\nNumber of mines is the number of level * 6.\n\n");
 
 	printf("Is level (1-6): ");
 	while(1)
@@ -171,8 +171,6 @@ void space(int height , int width)
 	board2[height][width]=1;
 	fin--;
 
-	printf("%d %d\n" , height , width);
-
 	for (i = 0; i < 8; ++i)
 	{
 		if ((height + h[i]) < FIELD_SIZE-1 && (height + h[i]) > 0 && (width + w[i]) < FIELD_SIZE-1 && (width + w[i]) > 0)
@@ -191,7 +189,6 @@ void space(int height , int width)
 			}
 		}
 	}
-	printf("return2\n");
 
 	return ;
 }
