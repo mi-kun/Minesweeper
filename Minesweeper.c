@@ -187,9 +187,6 @@ void space(int height , int width)
 				{
 					board2[height + h[i]][width + w[i]] = 1;
 					fin--;
-
-					printf("return1\n");
-					return ;
 				}
 			}
 		}
