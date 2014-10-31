@@ -52,7 +52,7 @@ int main(void)
 		printf("Please continue.\n");
 	}
 	
-	printf("Is coordinate (horizontally(1-10) vertically(1-10)) : ");
+	printf("Is coordinate (horizontal(1-10) vertical(1-10)) : ");
 	
 	while(1)
 	{
@@ -120,7 +120,7 @@ int main(void)
 
 	while(1)
 	{
-		printf("Is coordinate (horizontally(1-10) vertically(1-10)) : ");
+		printf("Is coordinate (horizontal(1-10) vertical(1-10)) : ");
 		scanf("%d" , &j);
 		scanf("%d" , &i);
 
