@@ -52,12 +52,12 @@ int main(void)
 		printf("Please continue.\n");
 	}
 	
-	printf("Is coordinate (1-10) (1-10) : ");
+	printf("Is coordinate (horizontally(1-10) vertically(1-10)) : ");
 	
 	while(1)
 	{
-		scanf("%d" , &x);
 		scanf("%d" , &y);
+		scanf("%d" , &x);
 
 		if(x < FIELD_SIZE-1 && x > 0 && y < FIELD_SIZE-1 && y > 0)
 		{
@@ -120,9 +120,9 @@ int main(void)
 
 	while(1)
 	{
-		printf("Is coordinate (1-10) (1-10) : ");
-		scanf("%d" , &i);
+		printf("Is coordinate (horizontally(1-10) vertically(1-10)) : ");
 		scanf("%d" , &j);
+		scanf("%d" , &i);
 
 		if(board2[i][j]==1 || i < 1 || i > FIELD_SIZE-2 || j < 1 || i > FIELD_SIZE-2)
 		{
@@ -199,8 +199,18 @@ void output(void)
 
 	int i;
 	int j;
+	
+	printf("   1  2  3  4  5  6  7  8  9 10 \n")
 	for(i=1;i<11;i++)
 	{
+		if(i == 10)
+		{
+			printf("%d " , i);
+		}
+		else
+		{
+			printf("%d  " , i);
+		}
 		for(j=1;j<11;j++)
 		{
 			if(board2[i][j]==1)
